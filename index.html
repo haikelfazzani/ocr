@@ -22,37 +22,48 @@
   <aside>
 
     <div class="w-100 vertical-align center mb-2">
-      <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 25px 50px;">
-        <i class="fa fa-images" style="font-size: 140px;"></i>
-        <p class="m-0 mt-1">click to load an image</p>
+
+      <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 20px 50px;">
+        <i class="fa fa-images" style="font-size: 100px;"></i>
+        <p class="m-0 mt-1" id="file-name">Load image from disk</p>
+        <input type="file" name="file" id="file" required hidden>
       </div>
 
-      <input type="file" name="file" id="file" required hidden>
-      <pre id="logs"></pre>
-      <progress id="progress" value="0" max="100">0%</progress>
-      <form class="mt-1" id="form-extract">
-        <input class="w-100 mb-1" type="url" id="url" name="url" placeholder="https://example.com/img.png">
-        <div class="d-flex">
-          <select class="mr-1" name="language" id="language">
-            <option value="eng">english</option>
-            <option value="fra">french</option>
-            <option value="ara">arabic</option>
+      <small>OR</small>
+
+      <form class="w-100 mt-1" id="form-extract" style="max-width: 70%;">
+        <div class="left">
+          <input class="w-100" type="url" id="url" name="url" placeholder="https://example.com/img.png">
+        </div>
+
+        <hr>
+
+        <div class="w-100 d-flex">
+          <select class="w-100 mr-1" name="language" id="language">
+            <option value="eng">English</option>
+            <option value="fra">French</option>
+            <option value="ara">Arabic</option>
           </select>
-          <button class="ml-1" type="submit">extract</button>
+          <button title="Extract" class="w-100 ml-1 mr-1" type="submit">extract</button>
+          <button title="Terminate" class="bg-red" id="btn-terminate-worker"><i class="fa fa-stop"></i></button>
         </div>
       </form>
+
+      <pre id="logs"></pre>
+
+      <progress id="progress" value="0" max="100">0%</progress>
     </div>
 
     <div class="vertical-align center">
       <p>Optical Character Recognition (OCR) is the process that converts an image of text into a machine-readable text
         format.</p>
-      <h4 class="uppercase">Created with love by <a href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
-          Fazzani</a></h4>
+      <p class="uppercase mt-3">Created with love by <a href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
+          Fazzani</a></p>
     </div>
   </aside>
 
   <main class="vertical-align left">
-    <img src="/quote.webp" alt="user image" id="myImage">
+    <img src="/quote.webp" alt="user image" id="input-image">
     <pre id="extracted-text"></pre>
   </main>
 

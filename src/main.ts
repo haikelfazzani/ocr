@@ -1,18 +1,15 @@
 import { createWorker } from 'tesseract.js';
-import { progressEL } from './constants';
-
-const fileInput = document.getElementById('file')!;
-const imgElement = document.getElementById('myImage')! as HTMLImageElement;
+import { fileInput, inImageEL, progressEL } from './constants';
 
 let file: any = '';
 let imgURL = '/quote.webp';
 
 const worker = await createWorker({
   logger: m => {
-    console.log(m)
-    progressEL.value = m.progress * 100;
-    progressEL.textContent = '' + m.progress * 100;
-    document.getElementById('logs')!.innerText = `${m.status.replace('tesseract','')}\n(${m.userJobId}/${m.workerId})`
+    const progress = m.progress * 100;
+    progressEL.value = progress;
+    progressEL.textContent = '' + progress;
+    document.getElementById('logs')!.innerText = `${m.status.replace('tesseract', '')} (${progress}%)\n(${m.userJobId}/${m.workerId})`
   }
 });
 
@@ -24,7 +21,8 @@ fileInput.addEventListener('change', (event: any) => {
 
     reader.addEventListener('load', (ev: any) => {
       imgURL = ev.target.result;
-      imgElement.src = ev.target.result;
+      inImageEL.src = ev.target.result;
+      document.getElementById('file-name')!.textContent = file.name;
     });
 
     reader.readAsDataURL(file);
@@ -37,14 +35,24 @@ document.getElementById('btn-file')?.addEventListener('click', () => {
 
 document.getElementById('form-extract')?.addEventListener('submit', async (e: any) => {
   e.preventDefault();
+  try {
+    const url = e.target.elements[0].value;
+    const language = e.target.elements[1].value;
 
-  const url = e.target.elements[0].value;
-  const language = e.target.elements[1].value;
+    if (url && url.length > 10) {
+      imgURL = url;
+      inImageEL.src = imgURL;
+    }
 
-  await worker.loadLanguage(language);
-  await worker.initialize(language);
-  const { data: { text } } = await worker.recognize(url && url.length > 10 ? url : imgURL);
-  document.getElementById('extracted-text')!.innerText = text;
-  await worker.terminate();
-
+    await worker.loadLanguage(language);
+    await worker.initialize(language);
+    const { data: { text } } = await worker.recognize(imgURL);
+    document.getElementById('extracted-text')!.innerText = text;
+  } catch (error: any) {
+    document.getElementById('logs')!.innerText = error.message
+  }
 });
+
+document.getElementById('btn-terminate-worker')?.addEventListener('click', async () => {
+  await worker.terminate();
+})
