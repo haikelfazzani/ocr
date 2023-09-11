@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Haikel Fazzani">
+  <title>OCR</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <aside>
+
+    <div class="w-100 vertical-align center mb-2">
+      <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 25px 50px;">
+        <i class="fa fa-images" style="font-size: 140px;"></i>
+        <p class="m-0 mt-1">click to load an image</p>
+      </div>
+
+      <input type="file" name="file" id="file" required hidden>
+      <pre id="logs"></pre>
+      <progress id="progress" value="0" max="100">0%</progress>
+      <form class="mt-1" id="form-extract">
+        <input class="w-100 mb-1" type="url" id="url" name="url" placeholder="https://example.com/img.png">
+        <div class="d-flex">
+          <select class="mr-1" name="language" id="language">
+            <option value="eng">english</option>
+            <option value="fra">french</option>
+            <option value="ara">arabic</option>
+          </select>
+          <button class="ml-1" type="submit">extract</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="vertical-align center">
+      <p>Optical Character Recognition (OCR) is the process that converts an image of text into a machine-readable text
+        format.</p>
+      <h4 class="uppercase">Created with love by <a href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
+          Fazzani</a></h4>
+    </div>
+  </aside>
+
+  <main class="vertical-align left">
+    <img src="/quote.webp" alt="user image" id="myImage">
+    <pre id="extracted-text"></pre>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

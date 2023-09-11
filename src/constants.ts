@@ -1,0 +1,1 @@
+export const progressEL=document.getElementById('progress')!;
