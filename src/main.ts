@@ -1,10 +1,20 @@
 import { createWorker } from 'tesseract.js';
 import { fileInput, inImageEL, progressEL } from './constants';
+import languages from './utils/languages';
 
 let file: any = '';
 let imgURL = '/quote.webp';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
+  languages.forEach(lang => {
+    const option = document.createElement('option')
+    option.textContent = lang.name
+    option.value = lang.code
+    document.getElementById('language')?.appendChild(option)
+  });
+
+  
   const worker = await createWorker({
     logger: m => {
       const progress = m.progress * 100;
@@ -55,6 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   document.getElementById('btn-terminate-worker')?.addEventListener('click', async () => {
-    await worker.terminate();
+    if (window.confirm('Do you really want to terminate worker?')) await worker.terminate();
   })
 })

@@ -3,11 +3,15 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Haikel Fazzani">
-  <title>OCR</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Free online Image to Text converter with OCR. Extract and convert text from images accurately with just one click. Try our user-friendly tool now!">
+  <meta name="keywords" content="converter, image, text, ocr, extract, image to text">
+  <meta name="author" content="Haikel Fazzani">
+  <title>Extract Text From an Image | Online Text Extractor</title>
+
+  <link rel="icon" type="image/x-icon" href="/48.ico">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +24,9 @@
 <body>
 
   <aside>
-
     <div class="w-100 vertical-align center mb-2">
+
+      <h1>Extract text from your images by using OCR technique.</h1>
 
       <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 20px 50px;">
         <i class="fa fa-images" style="font-size: 100px;"></i>
@@ -44,8 +49,8 @@
             <option value="fra">French</option>
             <option value="ara">Arabic</option>
           </select>
-          <button title="Extract" class="w-100 ml-1 mr-1" type="submit">extract</button>
-          <button title="Terminate" class="bg-red" id="btn-terminate-worker"><i class="fa fa-stop"></i></button>
+          <button title="Extract Text" class="w-100 ml-1 mr-1" type="submit">extract</button>
+          <button title="Terminate Worker" class="bg-red" id="btn-terminate-worker"><i class="fa fa-stop"></i></button>
         </div>
       </form>
 
@@ -55,16 +60,29 @@
     </div>
 
     <div class="vertical-align center">
-      <p>Optical Character Recognition (OCR) is the process that converts an image of text into a machine-readable text
-        format.</p>
-      <p class="uppercase mt-3">Created with love by <a href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
+      <p class="uppercase mt-3">Created with <a href="https://github.com/naptha/tesseract.js">tesseract.js</a> by <a
+          href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
           Fazzani</a></p>
     </div>
   </aside>
 
-  <main class="vertical-align left">
-    <img src="/quote.webp" alt="user image" id="input-image">
-    <pre id="extracted-text"></pre>
+  <main class="left">
+    <section>
+      <img src="/quote.webp" alt="user image" id="input-image">
+      <pre id="extracted-text"></pre>
+    </section>
+
+    <section>
+      <h2>How to Convert Image to Text?</h2>
+      <p class="black m-0">To extract the text from image by using this online converter, follow the steps below:</p>
+
+      <ul>
+        <li>Drag or upload a file from the system.</li>
+        <li>Or, paste the URL of the specific image.</li>
+        <li>Click the Extract Text button.</li>
+      </ul>
+      <p>The converter will use the latest OCR technology and generates the extracted text report within seconds.</p>
+    </section>
   </main>
 
   <script type="module" src="/src/main.ts"></script>

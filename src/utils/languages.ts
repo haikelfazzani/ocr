@@ -1,0 +1,28 @@
+const languages = [
+  { code: "ara", name: "Arabic" },
+  { code: "ben", name: "Bengali" },
+  { code: "dan", name: "Danish" },
+  { code: "deu", name: "German" },
+  { code: "eng", name: "English" },
+  { code: "fas", name: "Persian" },
+  { code: "fin", name: "Finnish" },
+  { code: "fra", name: "French" },
+  { code: "gle", name: "Irish" },
+  { code: "ita", name: "Italian" },
+  { code: "chi_sim", name: "Chinese - Simplified" },
+  { code: "chi_tra", name: "Chinese - Traditional" },
+  { code: "kor", name: "Korean" },
+  { code: "jpn", name: "Japanese" },
+  { code: "por", name: "Portuguese" },
+  { code: "pol", name: "Portuguese" },
+  { code: "hin", name: "Hindi" },
+  { code: "rus", name: "Russian" },
+  { code: "tur", name: "Turkish" },
+  { code: "spa", name: "Spanish; Castilian" },
+  { code: "spa_old", name: "Spanish; Castilian - Old" },
+  { code: "nor", name: "Norwegian" },
+  { code: "nld", name: "Dutch; Flemish" },
+  { code: "est", name: "Estonian" },
+];
+
+export default languages
