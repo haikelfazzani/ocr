@@ -5,7 +5,6 @@ import languages from './utils/languages';
 let file: any = '';
 let imgURL = '/quote.webp';
 
-
 document.addEventListener('DOMContentLoaded', async () => {
   languages.forEach(lang => {
     const option = document.createElement('option')

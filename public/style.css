@@ -15,7 +15,8 @@
 body {
   height: 100vh;
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.5fr 2.5fr;
   overflow: hidden; 
   letter-spacing: 0.6px;
 }
@@ -26,7 +27,7 @@ aside {
   background-image: linear-gradient(to bottom, #090e24, #090e24bf), url(pol.svg);
 }
 
-aside,main {display: block; height: 100%; width: calc(100% / 2); padding: 15px; overflow: auto;}
+aside,main {display: block; height: 100%;  padding: 15px; overflow: auto;}
 
 button {
   border: 0;
@@ -107,8 +108,9 @@ label,small {
 
 @media only screen and (max-width: 600px) {
   body {
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
   }
-
-  aside,main {width: auto;}
 }

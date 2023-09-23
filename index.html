@@ -50,19 +50,13 @@
             <option value="ara">Arabic</option>
           </select>
           <button title="Extract Text" class="w-100 ml-1 mr-1" type="submit">extract</button>
-          <button title="Terminate Worker" class="bg-red" id="btn-terminate-worker"><i class="fa fa-stop"></i></button>
+          <button title="Terminate Worker" class="bg-red" id="btn-terminate-worker" type="button"><i class="fa fa-stop"></i></button>
         </div>
       </form>
 
       <pre id="logs"></pre>
 
       <progress id="progress" value="0" max="100">0%</progress>
-    </div>
-
-    <div class="vertical-align center">
-      <p class="uppercase mt-3">Created with <a href="https://github.com/naptha/tesseract.js">tesseract.js</a> by <a
-          href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
-          Fazzani</a></p>
     </div>
   </aside>
 
@@ -83,9 +77,15 @@
       </ul>
       <p>The converter will use the latest OCR technology and generates the extracted text report within seconds.</p>
     </section>
+
+    <div>
+      <p class="uppercase mt-3">Created with <a href="https://github.com/naptha/tesseract.js">tesseract.js</a> by <a
+          href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
+          Fazzani</a></p>
+    </div>
   </main>
 
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/main.ts" defer></script>
 </body>
 
 </html>
