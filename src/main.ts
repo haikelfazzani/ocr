@@ -1,5 +1,5 @@
 import { createWorker } from 'tesseract.js';
-import { fileInput, inImageEL, progressEL } from './constants';
+import { extractedTextEL, fileInput, inImageEL, progressEL } from './constants';
 import languages from './utils/languages';
 
 let file: any = '';
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('language')?.appendChild(option)
   });
 
-  
+
   const worker = await createWorker({
     logger: m => {
       const progress = m.progress * 100;
@@ -57,7 +57,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       await worker.loadLanguage(language);
       await worker.initialize(language);
       const { data: { text } } = await worker.recognize(imgURL);
-      document.getElementById('extracted-text')!.innerText = text;
+
+      extractedTextEL.innerText = text;
+      // extractedTextEL.scrollIntoView();
+      window.scrollTo({ top: extractedTextEL.offsetTop - 70, behavior: 'smooth' });
     } catch (error: any) {
       document.getElementById('logs')!.innerText = error.message
     }

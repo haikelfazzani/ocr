@@ -23,68 +23,73 @@
 
 <body>
 
-  <aside>
-    <div class="w-100 vertical-align center mb-2">
+  <header class="bg-dark mb-2">
+    <p class="m-0">Extract text from your images by using OCR technique.</p>
+  </header>
 
-      <h1>Extract text from your images by using OCR technique.</h1>
+  <div class="root">
+    <aside>
+      <div class="w-100 vertical-align center mb-2">
+        <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 20px 50px;">
+          <i class="fa fa-images" style="font-size: 100px;"></i>
+          <p class="m-0 mt-1" id="file-name">Load image from disk</p>
+          <input type="file" name="file" id="file" required hidden>
+        </div>
 
-      <div id="btn-file" class="mb-1 center shadow br7 uppercase" style="padding: 20px 50px;">
-        <i class="fa fa-images" style="font-size: 100px;"></i>
-        <p class="m-0 mt-1" id="file-name">Load image from disk</p>
-        <input type="file" name="file" id="file" required hidden>
+        <small>OR</small>
+
+        <form class="w-100 mt-1" id="form-extract" style="max-width: 70%;">
+          <div class="left">
+            <input class="w-100" type="url" id="url" name="url" placeholder="https://example.com/img.png">
+          </div>
+
+          <hr>
+
+          <div class="w-100 d-flex">
+            <select class="w-100 mr-1" name="language" id="language">
+              <option value="eng">English</option>
+              <option value="fra">French</option>
+              <option value="ara">Arabic</option>
+            </select>
+            <button title="Extract Text" class="w-100 ml-1 mr-1" type="submit"><i
+                class="fa fa-play mr-1"></i>extract</button>
+            <button title="Terminate Worker" class="bg-red" id="btn-terminate-worker" type="button"><i
+                class="fa fa-stop"></i></button>
+          </div>
+        </form>
+
+        <pre id="logs"></pre>
+
+        <progress id="progress" value="0" max="100">0%</progress>
       </div>
+    </aside>
 
-      <small>OR</small>
+    <main class="left">
+      <img class="shadow" src="/quote.webp" alt="user image" id="input-image">
 
-      <form class="w-100 mt-1" id="form-extract" style="max-width: 70%;">
-        <div class="left">
-          <input class="w-100" type="url" id="url" name="url" placeholder="https://example.com/img.png">
-        </div>
+      <div class="br7 mt-1 shadow">
+        <pre id="extracted-text"></pre>
+      </div>
+    </main>
+  </div>
 
-        <hr>
+  <section>
+    <h2>How to Convert Image to Text?</h2>
+    <p class="m-0">To extract the text from image by using this online converter, follow the steps below:</p>
 
-        <div class="w-100 d-flex">
-          <select class="w-100 mr-1" name="language" id="language">
-            <option value="eng">English</option>
-            <option value="fra">French</option>
-            <option value="ara">Arabic</option>
-          </select>
-          <button title="Extract Text" class="w-100 ml-1 mr-1" type="submit">extract</button>
-          <button title="Terminate Worker" class="bg-red" id="btn-terminate-worker" type="button"><i
-              class="fa fa-stop"></i></button>
-        </div>
-      </form>
+    <ul>
+      <li>Drag or upload a file from the system.</li>
+      <li>Or, paste the URL of the specific image.</li>
+      <li>Click the Extract Text button.</li>
+    </ul>
+    <p>The converter will use the latest OCR technology and generates the extracted text report within seconds.</p>
+  </section>
 
-      <pre id="logs"></pre>
-
-      <progress id="progress" value="0" max="100">0%</progress>
-    </div>
-  </aside>
-
-  <main class="left">
-    <section>
-      <img src="/quote.webp" alt="user image" id="input-image">
-      <pre id="extracted-text"></pre>
-    </section>
-
-    <section>
-      <h2>How to Convert Image to Text?</h2>
-      <p class="black m-0">To extract the text from image by using this online converter, follow the steps below:</p>
-
-      <ul>
-        <li>Drag or upload a file from the system.</li>
-        <li>Or, paste the URL of the specific image.</li>
-        <li>Click the Extract Text button.</li>
-      </ul>
-      <p>The converter will use the latest OCR technology and generates the extracted text report within seconds.</p>
-    </section>
-
-    <div>
-      <p class="uppercase mt-3">Created with <a href="https://github.com/naptha/tesseract.js">tesseract.js</a> by <a
-          href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
-          Fazzani</a></p>
-    </div>
-  </main>
+  <footer class="mt-3">
+    <p class="uppercase m-0">Created with <a href="https://github.com/naptha/tesseract.js">tesseract.js</a> by <a
+        href="https://haikel-fazzani.deno.dev" target="_blank">Haikel
+        Fazzani</a></p>
+  </footer>
 
   <script type="module" src="/src/main.ts" defer></script>
 
